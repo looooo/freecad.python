@@ -21,11 +21,11 @@ with open(template_fn, "r") as template_file:
         render_file.write(output)
 
 
-setup(name='freecad.python_meta',
+setup(name='freecad.python',
       version="0.0.1",
       packages=['freecad'],
       maintainer="looooo",
       maintainer_email="sppedflyer@gmail.com",
-      url="https://github.com/FreeCAD/freecad.python_mmeta",
+      url="https://github.com/FreeCAD/freecad.python",
       description="a package to make freecad directly accessable via python",
       include_package_data=True)
