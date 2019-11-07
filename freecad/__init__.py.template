@@ -1,9 +1,11 @@
 import sys
-sys.path.append("{{ PATH_TO_FREECAD }}")
+sys.path.append(r"{{ PATH_TO_FREECAD }}")
+
+
 import FreeCAD as app
 import Part as part
 import PartDesign as partdesign
-# import Draft as draft # somehow not working in no gui mode
+import Draft as draft
 import Fem as fem
 import Mesh as mesh
 import Path as path

@@ -7,9 +7,9 @@ import subprocess as sub
 proc = sub.Popen(['FreeCAD', '-c', "import os; import FreeCADGui; print(os.path.dirname(FreeCADGui.__file__))"], stdout=sub.PIPE, stderr=sub.PIPE)
 out, err = proc.communicate()
 if err:
-    raise(RuntimeError(err.decode("utf8")))
-output = out.decode("utf8")
-freecad_lib_path = output.split("\n")[0]
+    raise(RuntimeError(err.decode("utf-8")))
+output = out.decode("utf-8")
+freecad_lib_path = output.split("\n")[0].rstrip()
 
 print("\n\n##############################")
 print("path to the freecad library is: \n")
@@ -22,7 +22,7 @@ render_fn = os.path.join(template_dir, "__init__.py")
 with open(template_fn, "r") as template_file:
     template_content = template_file.read()
     template = jinja2.Template(template_content)
-    output = template.render(PATH_TO_FREECAD=freecad_lib_path)
+    output = template.render(PATH_TO_FREECAD=str(freecad_lib_path))
     with open(render_fn, "w") as render_file:
         render_file.write(output)
 
