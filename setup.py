@@ -8,7 +8,8 @@ proc = sub.Popen(['FreeCAD', '-c', "import os; import FreeCADGui; print(os.path.
 out, err = proc.communicate()
 if err:
     raise(RuntimeError(err.decode("utf8")))
-freecad_lib_path = out.decode("utf8").replace("\n", "")
+output = out.decode("utf8")
+freecad_lib_path = output.split("\n")[0]
 
 print("\n\n##############################")
 print("path to the freecad library is: \n")
