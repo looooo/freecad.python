@@ -10,6 +10,11 @@ if err:
     raise(RuntimeError(err.decode("utf8")))
 freecad_lib_path = out.decode("utf8").replace("\n", "")
 
+print("\n\n##############################")
+print("path to the freecad library is: \n")
+print(freecad_lib_path)
+print("##############################\n\n")
+
 template_dir = os.path.join(os.path.dirname(__file__), "freecad")
 template_fn = os.path.join(template_dir, "__init__.py.template")
 render_fn = os.path.join(template_dir, "__init__.py")
