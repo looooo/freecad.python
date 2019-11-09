@@ -33,6 +33,9 @@ warnings.warn("importing <ModuleName> is deprecated. \n\
                DeprecationWarning)
 from freecad.<package_name> import *
 
+# additional we need private names, classes, function
+# from <freecad>.<package> import _<something>
+
 ```
 2. `Mod/<PackageName>/<SubModuleName>.py` replace content with:
 ```
@@ -41,6 +44,9 @@ warnings.warn("importing <SubModuleName> is deprecated. \n\
                Use 'from freecad.<package_name> import <sub_module_name>' instead", 
                DeprecationWarning)
 from freecad.<package_name>.<sub_module_name> import *
+
+# additional we need private names, classes, function
+# from <freecad>.<package> import _<something>
 ```
 
 3. `Mod/<PackageName>/<SubPackageName>` create new module `Mod/<PackageName>/<SubPackageName>.py`
@@ -50,4 +56,7 @@ warnings.warn("importing <SubPackageName> is deprecated. \n\
                Use 'from freecad.<package_name> import <sub_package_name>' instead", 
                DeprecationWarning)
 from freecad.<package_name>.<sub_package_name> import *
+
+# additional we need private names, classes, function
+# from <freecad>.<package> import _<something>
 ```
