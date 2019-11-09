@@ -1,10 +1,14 @@
 from setuptools import setup
 import os
+import shutil
 import jinja2
 import subprocess as sub
 # This setup needs FreeCAD to be available!
 
-proc = sub.Popen(['FreeCAD', '-c', "import os; import FreeCADGui; print(os.path.dirname(FreeCADGui.__file__))"], stdout=sub.PIPE, stderr=sub.PIPE)
+cmd = "freecad"
+if not shutil.which(cmd):  # restricted to python_version > 3.3
+    cmd = "FreeCAD"
+proc = sub.Popen([cmd, '-c', "import os; import FreeCADGui; print(os.path.dirname(FreeCADGui.__file__))"], stdout=sub.PIPE, stderr=sub.PIPE)
 out, err = proc.communicate()
 if err:
     raise(RuntimeError(err.decode("utf-8")))
