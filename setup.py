@@ -33,5 +33,5 @@ setup(name='freecad.python',
       maintainer="looooo",
       maintainer_email="sppedflyer@gmail.com",
       url="https://github.com/FreeCAD/freecad.python",
-      description="a package to make freecad directly accessable via python",
+      description="a package to make freecad directly accessible via python",
       include_package_data=True)
