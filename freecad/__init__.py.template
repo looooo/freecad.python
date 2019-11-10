@@ -1,8 +1,18 @@
-import sys
-sys.path.append(r"{{ PATH_TO_FREECAD }}")
+try:
+    import FreeCAD as app
+except ImportError:
+    # sys.path modification has not happened yet
+    default_dir = r"{{ PATH_TO_FREECAD }}"
+    try:
+        import os
+        default_dir = os.environ['FREECAD_DEFAULT_LIB_DIR']
+    except KeyError:
+        # using system default
+        pass
+    import sys
+    sys.path.append(default_dir) # this is the default version
+    import FreeCAD as app
 
-
-import FreeCAD as app
 import Part as part
 import PartDesign as partdesign
 import Draft as draft
