@@ -5,9 +5,9 @@ import jinja2
 import subprocess as sub
 # This setup needs FreeCAD to be available!
 
-cmd = "freecad"
+cmd = "FreeCAD"
 if not shutil.which(cmd):  # restricted to python_version > 3.3
-    cmd = "FreeCAD"
+    cmd = "freecad"
 proc = sub.Popen([cmd, '-c', "import os; import FreeCADGui; print(os.path.dirname(FreeCADGui.__file__))"], stdout=sub.PIPE, stderr=sub.PIPE)
 out, err = proc.communicate()
 if err:
@@ -29,6 +29,7 @@ with open(template_fn, "r") as template_file:
     output = template.render(PATH_TO_FREECAD=str(freecad_lib_path))
     with open(render_fn, "w") as render_file:
         render_file.write(output)
+
 
 
 setup(name='freecad.python',

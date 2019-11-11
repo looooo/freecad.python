@@ -12,14 +12,3 @@ except ImportError:
     import sys
     sys.path.append(default_dir) # this is the default version
     import FreeCAD as app
-
-import Part as part
-import PartDesign as partdesign
-import Draft as draft
-import Fem as fem
-import Mesh as mesh
-import Path as path
-import Points as points
-import Spreadsheet as spreadsheet
-import Sketcher as sketcher
-import TechDraw as techdraw
