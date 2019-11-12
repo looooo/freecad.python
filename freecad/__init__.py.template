@@ -1,25 +1,25 @@
-__all__ = ["app"]
-
 try:
     import FreeCAD as app
-except ImportError:
+except ModuleNotFoundError:
     # sys.path modification has not happened yet
 
     # 1. we check if an env-variable "PATH_TO_FREECAD_LIB"
-    import sys, os
+    import sys as _sys
+    import os as _os
     try:
-        default_dir = os.environ["PATH_TO_FREECAD_LIB"]
+        _path_to_freecad_libdir = _os.environ["PATH_TO_FREECAD_LIBDIR"]
     except KeyError:
         # 2. we use the default freecad defined for this package
-        default_dir = r"{{ PATH_TO_FREECAD }}"
+        _path_to_freecad_libdir = r"{{ PATH_TO_FREECAD_LIBDIR }}"
+        print("PATH_TO_FREECAD_LIBDIR not specified, using default \
+FreeCAD version in {}".format( "{{ PATH_TO_FREECAD_LIBDIR }}"))
         try:
-            import os
-            default_dir = os.environ['FREECAD_DEFAULT_LIB_DIR']
+            _path_to_freecad_libdir = _os.environ['FREECAD_DEFAULT_LIB_DIR']
         except KeyError:
             # using system default
             pass
 
-    sys.path.append(default_dir) # this is the default version
+    _sys.path.append(_path_to_freecad_libdir) # this is the default version
     import FreeCAD as app
 
 # as this is a namespace-package we need to extend the path
@@ -29,5 +29,5 @@ except ImportError:
 # PROVIDE A freecad/__init__.py FILE                             !
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-from pkgutil import extend_path
-__path__ = extend_path(__path__, __name__)
+from pkgutil import extend_path as _extend_path
+__path__ = _extend_path(__path__, __name__)
